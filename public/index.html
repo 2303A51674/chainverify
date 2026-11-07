@@ -345,7 +345,7 @@
       catch { show("bad", "No QR found", "Could not read a QR code from that image."); }
     };
     $("#chk").onclick = () => $("#man").value.trim() && verify($("#man").value);
-    $("#man").onkeydown = (e) => e.key === "Enter" && $("#chk").click();
+    $("#man").onkeydown = (e) => { if (e.key === "Enter") $("#chk").click(); };
 
     $("#reg").onclick = async () => {
       const btn = $("#reg"); btn.disabled = true; $("#regmsg").textContent = "Sending transaction(s)…"; $("#qrs").innerHTML = "";
