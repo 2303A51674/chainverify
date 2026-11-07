@@ -1,0 +1,61 @@
+sku,name,category,manufacturer,batch,quantity,mrp_inr
+SKU0001,AeroRun Sneakers,Footwear,Acme Footwear Ltd,B-2026-01-D30,9,1669
+SKU0002,TrailBlazer Boots,Footwear,Acme Footwear Ltd,B-2026-02-F99,14,4749
+SKU0003,CloudWalk Sandals,Footwear,StrideCraft India,B-2026-09-D18,6,7669
+SKU0004,UrbanStep Loafers,Footwear,StrideCraft India,B-2026-09-D26,11,3179
+SKU0005,SprintPro Spikes,Footwear,StrideCraft India,B-2026-09-A84,10,1889
+SKU0006,AeroRun Sneakers,Footwear,Acme Footwear Ltd,B-2026-06-E86,12,3969
+SKU0007,TrailBlazer Boots,Footwear,StrideCraft India,B-2026-07-E74,15,4419
+SKU0008,CloudWalk Sandals,Footwear,Acme Footwear Ltd,B-2026-02-C21,13,5359
+SKU0009,UrbanStep Loafers,Footwear,StrideCraft India,B-2026-04-B34,5,3309
+SKU0010,SprintPro Spikes,Footwear,Acme Footwear Ltd,B-2026-09-F27,14,5279
+SKU0011,BassPods Earbuds,Electronics,Voltix Electronics,B-2026-04-A98,6,5589
+SKU0012,PowerCore 20000 Power Bank,Electronics,NovaSound Pvt Ltd,B-2026-05-E37,6,3449
+SKU0013,SmartFit Band 5,Electronics,Voltix Electronics,B-2026-03-D72,10,1889
+SKU0014,ClearView Webcam 1080p,Electronics,Voltix Electronics,B-2026-07-F83,12,5159
+SKU0015,PulseSpeaker Mini,Electronics,Voltix Electronics,B-2026-02-A58,12,5939
+SKU0016,BassPods Earbuds,Electronics,Voltix Electronics,B-2026-08-C14,5,5089
+SKU0017,PowerCore 20000 Power Bank,Electronics,NovaSound Pvt Ltd,B-2026-08-B44,8,3349
+SKU0018,SmartFit Band 5,Electronics,NovaSound Pvt Ltd,B-2026-10-B38,10,2169
+SKU0019,ClearView Webcam 1080p,Electronics,Voltix Electronics,B-2026-01-D43,10,2119
+SKU0020,PulseSpeaker Mini,Electronics,NovaSound Pvt Ltd,B-2026-08-D64,7,2769
+SKU0021,Paracetamol 500mg (10 tabs),Pharma,MediTrust Labs,B-2026-10-B92,15,269
+SKU0022,Vitamin D3 60K IU Capsules,Pharma,CureWell Pharma,B-2026-01-B58,10,429
+SKU0023,ORS Electrolyte Sachets,Pharma,CureWell Pharma,B-2026-08-E37,11,309
+SKU0024,Cough Syrup 100ml,Pharma,MediTrust Labs,B-2026-04-C78,15,39
+SKU0025,Antacid Gel 200ml,Pharma,CureWell Pharma,B-2026-04-D70,10,129
+SKU0026,Paracetamol 500mg (10 tabs),Pharma,CureWell Pharma,B-2026-06-A86,13,409
+SKU0027,Vitamin D3 60K IU Capsules,Pharma,CureWell Pharma,B-2026-06-F98,11,359
+SKU0028,ORS Electrolyte Sachets,Pharma,MediTrust Labs,B-2026-06-D32,13,29
+SKU0029,Cough Syrup 100ml,Pharma,CureWell Pharma,B-2026-05-C61,11,29
+SKU0030,Antacid Gel 200ml,Pharma,MediTrust Labs,B-2026-06-A22,6,129
+SKU0031,Vitamin C Face Serum 30ml,Cosmetics,GlowLeaf Naturals,B-2026-06-C97,12,839
+SKU0032,SPF 50 Sunscreen 50g,Cosmetics,GlowLeaf Naturals,B-2026-08-B92,14,789
+SKU0033,Aloe Vera Gel 200ml,Cosmetics,Aura Beauty Co,B-2026-08-D34,6,419
+SKU0034,Matte Lipstick - Ruby,Cosmetics,GlowLeaf Naturals,B-2026-04-C80,12,1099
+SKU0035,Hair Repair Shampoo 250ml,Cosmetics,GlowLeaf Naturals,B-2026-07-C41,13,749
+SKU0036,Vitamin C Face Serum 30ml,Cosmetics,Aura Beauty Co,B-2026-07-B82,15,1059
+SKU0037,SPF 50 Sunscreen 50g,Cosmetics,Aura Beauty Co,B-2026-02-D56,12,159
+SKU0038,Aloe Vera Gel 200ml,Cosmetics,GlowLeaf Naturals,B-2026-01-E30,9,1269
+SKU0039,Matte Lipstick - Ruby,Cosmetics,Aura Beauty Co,B-2026-07-A54,11,1219
+SKU0040,Hair Repair Shampoo 250ml,Cosmetics,GlowLeaf Naturals,B-2026-02-E97,13,289
+SKU0041,Orion Leather Wallet,Luxury Goods,Maison Orion,B-2026-08-F88,14,7289
+SKU0042,Classic Chronograph Watch,Luxury Goods,Heritage Timepieces,B-2026-10-D61,14,38809
+SKU0043,Crest Aviator Sunglasses,Luxury Goods,Heritage Timepieces,B-2026-05-E31,10,30989
+SKU0044,Signature Leather Belt,Luxury Goods,Maison Orion,B-2026-02-C22,13,35199
+SKU0045,Heritage Silk Scarf,Luxury Goods,Maison Orion,B-2026-03-A83,15,21779
+SKU0046,Orion Leather Wallet,Luxury Goods,Maison Orion,B-2026-02-A85,7,24079
+SKU0047,Classic Chronograph Watch,Luxury Goods,Heritage Timepieces,B-2026-04-E36,7,48159
+SKU0048,Crest Aviator Sunglasses,Luxury Goods,Heritage Timepieces,B-2026-01-F26,8,18449
+SKU0049,Signature Leather Belt,Luxury Goods,Heritage Timepieces,B-2026-09-C14,13,23529
+SKU0050,Heritage Silk Scarf,Luxury Goods,Heritage Timepieces,B-2026-01-E18,13,16019
+SKU0051,Ceramic Brake Pads (Front),Auto Parts,TorqueLine Auto,B-2026-09-E15,14,1369
+SKU0052,Synthetic Engine Oil 4L,Auto Parts,TorqueLine Auto,B-2026-08-B44,15,4999
+SKU0053,Iridium Spark Plug,Auto Parts,TorqueLine Auto,B-2026-06-E27,5,3439
+SKU0054,Cabin Air Filter,Auto Parts,RoadSafe Components,B-2026-10-B44,14,3899
+SKU0055,LED Headlamp Bulb H4,Auto Parts,TorqueLine Auto,B-2026-10-F69,12,6499
+SKU0056,Ceramic Brake Pads (Front),Auto Parts,TorqueLine Auto,B-2026-03-E59,5,729
+SKU0057,Synthetic Engine Oil 4L,Auto Parts,RoadSafe Components,B-2026-09-D79,9,4979
+SKU0058,Iridium Spark Plug,Auto Parts,TorqueLine Auto,B-2026-02-C56,7,1629
+SKU0059,Cabin Air Filter,Auto Parts,TorqueLine Auto,B-2026-01-E41,10,3019
+SKU0060,LED Headlamp Bulb H4,Auto Parts,RoadSafe Components,B-2026-04-D88,7,3989

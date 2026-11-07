@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ChainVerify – Product Authenticity</title>
+  <style>
+    :root {
+      --bg: #f6f7fb;
+      --card: #fff;
+      --tx: #161a23;
+      --mut: #667085;
+      --bd: #e3e6ee;
+      --pri: #4f46e5;
+      --ok: #0f9d58;
+      --okb: #e6f6ec;
+      --warn: #b26a00;
+      --wb: #fff3dc;
+      --bad: #d92d20;
+      --badb: #fde8e6
+    }
+
+    @media(prefers-color-scheme:dark) {
+      :root {
+        --bg: #0f1218;
+        --card: #181c25;
+        --tx: #eef0f5;
+        --mut: #98a2b3;
+        --bd: #2a3040;
+        --pri: #818cf8;
+        --ok: #4ade80;
+        --okb: #12301f;
+        --warn: #fbbf24;
+        --wb: #33270a;
+        --bad: #f87171;
+        --badb: #3a1512
+      }
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--tx);
+      font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif
+    }
+
+    .wrap {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 16px
+    }
+
+    h1 {
+      font-size: 22px;
+      margin: 4px 0
+    }
+
+    .sub,
+    .note {
+      color: var(--mut)
+    }
+
+    .note {
+      font-size: 13px
+    }
+
+    .pill {
+      display: inline-block;
+      font-size: 12px;
+      padding: 2px 10px;
+      border-radius: 99px;
+      background: var(--card);
+      border: 1px solid var(--bd);
+      color: var(--mut)
+    }
+
+    .tabs {
+      display: flex;
+      gap: 6px;
+      margin: 14px 0
+    }
+
+    .tabs button {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid var(--bd);
+      background: var(--card);
+      color: var(--tx);
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer
+    }
+
+    .tabs button.on {
+      background: var(--pri);
+      border-color: var(--pri);
+      color: #fff
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--bd);
+      border-radius: 14px;
+      padding: 16px;
+      margin-bottom: 14px
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      color: var(--mut);
+      margin: 10px 0 4px
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid var(--bd);
+      border-radius: 8px;
+      background: var(--bg);
+      color: var(--tx);
+      font: inherit
+    }
+
+    .btn {
+      padding: 10px 16px;
+      border: 0;
+      border-radius: 10px;
+      background: var(--pri);
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      margin: 12px 8px 0 0
+    }
+
+    .btn.alt {
+      background: transparent;
+      border: 1px solid var(--bd);
+      color: var(--tx)
+    }
+
+    .btn:disabled {
+      opacity: .5
+    }
+
+    .qrs {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 10px;
+      margin-top: 12px
+    }
+
+    .qr {
+      border: 1px solid var(--bd);
+      border-radius: 10px;
+      padding: 8px;
+      text-align: center
+    }
+
+    .qr .box {
+      background: #fff;
+      padding: 6px;
+      border-radius: 6px;
+      display: inline-block
+    }
+
+    .qr code {
+      display: block;
+      font-size: 12px;
+      margin-top: 6px
+    }
+
+    #reader {
+      width: 100%;
+      max-width: 360px;
+      margin: 8px auto
+    }
+
+    .res {
+      border-radius: 14px;
+      padding: 16px;
+      margin-top: 14px;
+      border: 2px solid
+    }
+
+    .res h2 {
+      margin: 0 0 6px;
+      font-size: 20px
+    }
+
+    .res.ok {
+      background: var(--okb);
+      border-color: var(--ok)
+    }
+
+    .res.warn {
+      background: var(--wb);
+      border-color: var(--warn)
+    }
+
+    .res.bad {
+      background: var(--badb);
+      border-color: var(--bad)
+    }
+
+    .res dl {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 4px 10px;
+      margin: 10px 0 0
+    }
+
+    .res dt {
+      color: var(--mut)
+    }
+
+    .res dd {
+      margin: 0;
+      word-break: break-all
+    }
+
+    .blk {
+      border-left: 3px solid var(--pri);
+      padding: 6px 10px;
+      margin: 8px 0;
+      font-size: 13px;
+      background: var(--bg);
+      border-radius: 0 8px 8px 0;
+      word-break: break-all
+    }
+
+    .blk small {
+      color: var(--mut)
+    }
+
+    @media print {
+
+      .tabs,
+      .btn,
+      label,
+      input,
+      .hdr,
+      .note {
+        display: none
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="hdr">
+      <h1>🔗 ChainVerify</h1>
+      <p class="sub">Scan a product's QR code to check it against the blockchain.</p><span class="pill"
+        id="net">connecting…</span>
+    </div>
+    <div class="tabs"><button data-t="ver" class="on">Verify</button><button data-t="mfr">Manufacturer</button><button
+        data-t="led">Ledger</button></div>
+
+    <section id="ver">
+      <div class="card">
+        <div id="reader"></div>
+        <button class="btn" id="cam">📷 Scan with camera</button><button class="btn alt" id="stop" hidden>Stop
+          camera</button>
+        <label>Or upload a photo of the QR code</label><input type="file" id="file" accept="image/*">
+        <label>Or type the serial (e.g. PV-ABCD2345)</label><input id="man" placeholder="PV-XXXXXXXX"
+          autocomplete="off">
+        <button class="btn" id="chk">Verify</button>
+        <div id="result"></div>
+      </div>
+    </section>
+
+    <section id="mfr" hidden>
+      <div class="card">
+        <b>Register products on the blockchain</b>
+        <label>Admin key</label><input id="key" type="password" placeholder="ADMIN_KEY from your .env">
+        <label>Product name</label><input id="pn" value="AeroRun Sneakers">
+        <label>Batch number</label><input id="pb" value="B-2026-10-A1">
+        <label>Manufacturer</label><input id="pm" value="Acme Footwear Ltd">
+        <label>Quantity (1–200)</label><input id="pq" type="number" min="1" max="200" value="4">
+        <button class="btn" id="reg">Register</button><button class="btn alt" onclick="window.print()">Print
+          labels</button>
+        <p class="note" id="regmsg"></p>
+        <div class="qrs" id="qrs"></div>
+      </div>
+    </section>
+
+    <section id="led" hidden>
+      <div class="card"><b>On-chain ledger</b> <span class="pill" id="tot"></span>
+        <p class="note" id="ctr"></p>
+        <div id="blocks"></div>
+      </div>
+    </section>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.3.8/html5-qrcode.min.js"></script>
+  <script>
+    const $ = (s) => document.querySelector(s);
+    const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+    const fmt = (t) => new Date(t).toLocaleString();
+    const SER = /PV-[A-HJ-NP-Z2-9]{8}/i;
+
+    function show(cls, title, msg, rows) {
+      $("#result").innerHTML = `<div class="res ${cls}"><h2>${title}</h2><div>${msg}</div>` +
+        (rows ? "<dl>" + rows.map((r) => `<dt>${r[0]}</dt><dd>${esc(r[1])}</dd>`).join("") + "</dl>" : "") + "</div>";
+      $("#result").scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+
+    async function verify(text) {
+      const m = String(text).match(SER);
+      if (!m) return show("bad", "❌ Not a ChainVerify code", "This QR/serial is not in our format. Treat the product with caution.");
+      const serial = m[0].toUpperCase();
+      show("warn", "Checking…", "Looking up the blockchain record.");
+      try {
+        const d = await (await fetch("/api/verify/" + serial)).json();
+        if (d.error) throw new Error(d.error);
+        const p = d.product;
+        const rows = p && [["Product", p.name], ["Manufacturer", p.manufacturer], ["Batch", p.batch], ["Serial", d.serial], ["Registered", fmt(p.registeredAt)]];
+        if (d.status === "genuine") show("ok", "✅ Genuine product", "Registered by the manufacturer on the blockchain. This is the first time this code has been verified.", rows);
+        else if (d.status === "reused") show("warn", "⚠️ Genuine record, but already verified", `This code has been verified ${d.scans.count - 1} time(s) before (first on ${fmt(d.scans.first)}). If you just bought this item new, the label may have been copied.`, rows);
+        else if (d.status === "flagged") show("bad", "🚩 Flagged by manufacturer", "The manufacturer has marked this code as compromised. Do not trust this item.", rows);
+        else if (d.status === "fake") show("bad", "❌ Fake or unregistered", `No manufacturer registered <b>${esc(d.serial)}</b> on the blockchain. Do not trust this product.`);
+        else show("bad", "❌ Invalid code", "Unrecognised serial format.");
+      } catch (e) { show("bad", "Server error", esc(e.message)); }
+    }
+
+    let h5 = null;
+    async function stopCam() { try { if (h5 && h5.isScanning) await h5.stop(); } catch { } $("#stop").hidden = true; $("#cam").hidden = false; }
+    $("#cam").onclick = async () => {
+      try {
+        h5 = h5 || new Html5Qrcode("reader");
+        await h5.start({ facingMode: "environment" }, { fps: 10, qrbox: 220 }, async (t) => { await stopCam(); verify(t); }, () => { });
+        $("#cam").hidden = true; $("#stop").hidden = false;
+      } catch { show("warn", "Camera unavailable", "Allow camera access (needs https or localhost), or use photo upload / typing the serial."); }
+    };
+    $("#stop").onclick = stopCam;
+    $("#file").onchange = async (e) => {
+      const f = e.target.files[0]; if (!f) return;
+      try { h5 = h5 || new Html5Qrcode("reader"); verify(await h5.scanFile(f, false)); }
+      catch { show("bad", "No QR found", "Could not read a QR code from that image."); }
+    };
+    $("#chk").onclick = () => $("#man").value.trim() && verify($("#man").value);
+    $("#man").onkeydown = (e) => e.key === "Enter" && $("#chk").click();
+
+    $("#reg").onclick = async () => {
+      const btn = $("#reg"); btn.disabled = true; $("#regmsg").textContent = "Sending transaction(s)…"; $("#qrs").innerHTML = "";
+      try {
+        sessionStorage.setItem("ak", $("#key").value);
+        const r = await fetch("/api/register", {
+          method: "POST", headers: { "Content-Type": "application/json", "x-api-key": $("#key").value },
+          body: JSON.stringify({ name: $("#pn").value, batch: $("#pb").value, manufacturer: $("#pm").value, quantity: +$("#pq").value })
+        });
+        const d = await r.json(); if (!r.ok) throw new Error(d.error);
+        for (const s of d.serials) {
+          const el = document.createElement("div"); el.className = "qr";
+          el.innerHTML = '<div class="box"></div><code></code>'; el.querySelector("code").textContent = s; $("#qrs").appendChild(el);
+          new QRCode(el.querySelector(".box"), { text: location.origin + "/?s=" + s, width: 120, height: 120 });
+        }
+        $("#regmsg").textContent = `${d.serials.length} item(s) registered in ${d.txs.length} transaction(s). Print the labels and attach them to the products.`;
+      } catch (e) { $("#regmsg").textContent = "Failed: " + e.message; }
+      btn.disabled = false;
+    };
+
+    async function loadLedger() {
+      try {
+        const d = await (await fetch("/api/ledger")).json();
+        if (d.error) throw new Error(d.error);
+        $("#tot").textContent = d.total + " products";
+        $("#ctr").textContent = `Contract ${d.contract} on ${d.network}. Showing the latest ${d.items.length}. Serial numbers are stored only as hashes.` + (d.note ? " ⚠ " + d.note : "");
+        $("#blocks").innerHTML = d.items.map((b) => `<div class="blk"><b>${esc(b.name)}</b> · batch ${esc(b.batch)} · ${esc(b.manufacturer)}<br><small>block ${b.block} · tx ${b.tx.slice(0, 18)}… · serialHash ${b.serialHash.slice(0, 18)}…</small></div>`).join("") || '<p class="note">No products found yet.</p>';
+      } catch (e) { $("#tot").textContent = "error"; $("#blocks").innerHTML = '<p class="note">Could not load ledger: ' + esc(e.message) + "</p>"; }
+    }
+
+    document.querySelectorAll(".tabs button").forEach((b) => b.onclick = () => {
+      document.querySelectorAll(".tabs button").forEach((x) => x.classList.toggle("on", x === b));
+      ["ver", "mfr", "led"].forEach((id) => $("#" + id).hidden = id !== b.dataset.t);
+      if (b.dataset.t !== "ver") stopCam();
+      if (b.dataset.t === "led") loadLedger().catch(() => { });
+    });
+    $("#key").value = sessionStorage.getItem("ak") || "";
+    fetch("/api/health").then((r) => r.json()).then((h) => $("#net").textContent = "🟢 connected · " + h.network).catch(() => $("#net").textContent = "🔴 server offline");
+    const q = new URLSearchParams(location.search).get("s"); if (q) verify(q);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,284 @@
+{
+  "network": "amoy",
+  "address": "0x48521204721C176a051C92D3fbF0908bd9127225",
+  "deployBlock": 52219193,
+  "abi": [
+    {
+      "type": "constructor",
+      "stateMutability": "undefined",
+      "payable": false,
+      "inputs": []
+    },
+    {
+      "type": "error",
+      "name": "AlreadyRegistered",
+      "inputs": [
+        {
+          "type": "bytes32",
+          "name": "serialHash"
+        }
+      ]
+    },
+    {
+      "type": "error",
+      "name": "EmptyInput",
+      "inputs": []
+    },
+    {
+      "type": "error",
+      "name": "NotFound",
+      "inputs": [
+        {
+          "type": "bytes32",
+          "name": "serialHash"
+        }
+      ]
+    },
+    {
+      "type": "error",
+      "name": "NotManufacturer",
+      "inputs": []
+    },
+    {
+      "type": "error",
+      "name": "NotOwner",
+      "inputs": []
+    },
+    {
+      "type": "event",
+      "anonymous": false,
+      "name": "ManufacturerUpdated",
+      "inputs": [
+        {
+          "type": "address",
+          "name": "account",
+          "indexed": true
+        },
+        {
+          "type": "bool",
+          "name": "allowed",
+          "indexed": false
+        }
+      ]
+    },
+    {
+      "type": "event",
+      "anonymous": false,
+      "name": "ProductFlagged",
+      "inputs": [
+        {
+          "type": "bytes32",
+          "name": "serialHash",
+          "indexed": true
+        },
+        {
+          "type": "address",
+          "name": "by",
+          "indexed": true
+        }
+      ]
+    },
+    {
+      "type": "event",
+      "anonymous": false,
+      "name": "ProductRegistered",
+      "inputs": [
+        {
+          "type": "bytes32",
+          "name": "serialHash",
+          "indexed": true
+        },
+        {
+          "type": "string",
+          "name": "name",
+          "indexed": false
+        },
+        {
+          "type": "string",
+          "name": "batch",
+          "indexed": false
+        },
+        {
+          "type": "string",
+          "name": "manufacturer",
+          "indexed": false
+        },
+        {
+          "type": "address",
+          "name": "by",
+          "indexed": true
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "flagProduct",
+      "constant": false,
+      "payable": false,
+      "inputs": [
+        {
+          "type": "bytes32",
+          "name": "serialHash"
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "type": "function",
+      "name": "manufacturers",
+      "constant": true,
+      "stateMutability": "view",
+      "payable": false,
+      "inputs": [
+        {
+          "type": "address",
+          "name": ""
+        }
+      ],
+      "outputs": [
+        {
+          "type": "bool",
+          "name": ""
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "owner",
+      "constant": true,
+      "stateMutability": "view",
+      "payable": false,
+      "inputs": [],
+      "outputs": [
+        {
+          "type": "address",
+          "name": ""
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "registerBatch",
+      "constant": false,
+      "payable": false,
+      "inputs": [
+        {
+          "type": "bytes32[]",
+          "name": "serialHashes"
+        },
+        {
+          "type": "string",
+          "name": "name"
+        },
+        {
+          "type": "string",
+          "name": "batch"
+        },
+        {
+          "type": "string",
+          "name": "manufacturer"
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "type": "function",
+      "name": "registerProduct",
+      "constant": false,
+      "payable": false,
+      "inputs": [
+        {
+          "type": "bytes32",
+          "name": "serialHash"
+        },
+        {
+          "type": "string",
+          "name": "name"
+        },
+        {
+          "type": "string",
+          "name": "batch"
+        },
+        {
+          "type": "string",
+          "name": "manufacturer"
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "type": "function",
+      "name": "setManufacturer",
+      "constant": false,
+      "payable": false,
+      "inputs": [
+        {
+          "type": "address",
+          "name": "account"
+        },
+        {
+          "type": "bool",
+          "name": "allowed"
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "type": "function",
+      "name": "totalProducts",
+      "constant": true,
+      "stateMutability": "view",
+      "payable": false,
+      "inputs": [],
+      "outputs": [
+        {
+          "type": "uint256",
+          "name": ""
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "verifyProduct",
+      "constant": true,
+      "stateMutability": "view",
+      "payable": false,
+      "inputs": [
+        {
+          "type": "bytes32",
+          "name": "serialHash"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "bool",
+          "name": "exists"
+        },
+        {
+          "type": "bool",
+          "name": "flagged"
+        },
+        {
+          "type": "string",
+          "name": "name"
+        },
+        {
+          "type": "string",
+          "name": "batch"
+        },
+        {
+          "type": "string",
+          "name": "manufacturer"
+        },
+        {
+          "type": "uint64",
+          "name": "registeredAt"
+        },
+        {
+          "type": "address",
+          "name": "registeredBy"
+        }
+      ]
+    }
+  ]
+}

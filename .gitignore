@@ -1,0 +1,6 @@
+node_modules
+.env
+cache
+artifacts
+data/scans.json
+hh.sandbox.config.js
